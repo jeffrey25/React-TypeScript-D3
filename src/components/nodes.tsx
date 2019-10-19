@@ -1,5 +1,7 @@
 import * as React from "react";
 import * as d3 from "d3";
+import * as d3Scale from 'd3-scale';
+import * as d3ScaleChromatic from 'd3-scale-chromatic';
 import { BehaviorGraphTypes } from "../types";
 
 class Node extends React.Component<{ node: BehaviorGraphTypes.BehaviorGraphNode, color: string }, {}> {
@@ -51,10 +53,10 @@ export default class Nodes extends React.Component<{ nodes: BehaviorGraphTypes.B
   }
 
   render() {
-    const color = d3.scaleOrdinal(d3.schemeCategory20);
-      const nodes = this.props.nodes.map((node: BehaviorGraphTypes.BehaviorGraphNode, index: number) => {
-          let count = node.triggeredProcesses ?? 0;
-          return <Node key={index} node={node} color={color(count.toString())} />;
+    const color = d3Scale.scaleOrdinal(d3ScaleChromatic.schemeCategory10);
+    const nodes = this.props.nodes.map((node: BehaviorGraphTypes.BehaviorGraphNode, index: number) => {
+      let count = node.triggeredProcesses ? node.triggeredProcesses.length : 0;
+      return <Node key={index} node={node} color={color(count.toString())} />;
     });
 
     return (

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as d3 from 'd3';
-import { d3Types } from "../types";
+import * as d3force from 'd3-force';
+import { BehaviorGraphTypes } from "../types";
 import Links from "./links";
 import Nodes from "./nodes";
 import Labels from "./labels";
@@ -9,7 +10,7 @@ import '../styles/App.css';
 interface Props {
   width: number;
   height: number;
-  graph: d3Types.d3Graph;
+  graph: BehaviorGraphTypes.BehaviorGraph;
 }
 
 export default class App extends React.Component<Props, {}> {
@@ -17,8 +18,8 @@ export default class App extends React.Component<Props, {}> {
 
   constructor(props: Props) {
     super(props);
-    this.simulation = d3.forceSimulation()
-      .force("link", d3.forceLink().id(function (d: d3Types.d3Node) {
+    this.simulation = d3force.forceSimulation()
+      .force("link", d3force.forceLink().id(function (d: BehaviorGraphTypes.BehaviorGraphNode) {
         return d.id;
       }))
       .force("charge", d3.forceManyBody().strength(-100))

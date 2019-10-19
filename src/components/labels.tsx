@@ -17,8 +17,8 @@ class Label extends React.Component<{ node: BehaviorGraphTypes.BehaviorGraphNode
 }
 
 export default class Labels extends React.Component<{ nodes: BehaviorGraphTypes.BehaviorGraphNode[] }, {}> {
-    render() {
-        const labels = this.props.nodes.map((node: BehaviorGraphTypes.BehaviorGraphNode, index: number) => {
+  render() {
+    const labels = this.props.nodes.map((node: BehaviorGraphTypes.BehaviorGraphNode, index: number) => {
       return <Label key={index} node={node} />;
     });
 
