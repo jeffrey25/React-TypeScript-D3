@@ -1,8 +1,8 @@
 import * as React from "react";
 import * as d3 from "d3";
-import { d3Types } from "../types";
+import { BehaviorGraphTypes } from "../types";
 
-class Label extends React.Component<{ node: d3Types.d3Node }, {}> {
+class Label extends React.Component<{ node: BehaviorGraphTypes.BehaviorGraphNode }, {}> {
   ref: SVGTextElement;
 
   componentDidMount() {
@@ -16,9 +16,9 @@ class Label extends React.Component<{ node: d3Types.d3Node }, {}> {
   }
 }
 
-export default class Labels extends React.Component<{ nodes: d3Types.d3Node[] }, {}> {
-  render() {
-    const labels = this.props.nodes.map((node: d3Types.d3Node, index: number) => {
+export default class Labels extends React.Component<{ nodes: BehaviorGraphTypes.BehaviorGraphNode[] }, {}> {
+    render() {
+        const labels = this.props.nodes.map((node: BehaviorGraphTypes.BehaviorGraphNode, index: number) => {
       return <Label key={index} node={node} />;
     });
 

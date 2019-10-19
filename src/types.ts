@@ -1,17 +1,24 @@
-export namespace d3Types {
-  export type d3Node = {
-    id: string,
-    group: number
-  };
+export namespace BehaviorGraphTypes {
+    export type BehaviorGraphNode = {
+        id: string,
+        processPath?: string,
+        triggeredProcesses?: string[],
+        infectedProcesses?: string[],
+        isDirty?: boolean,
+        events: string,
+        parentProcessId: string,
+        isRoot: number,
+    };
 
-  export type d3Link = {
-    source: string,
-    target: string,
-    value: number
-  };
+    export type BehaviorGraphLink = {
+        source: string,
+        target: string,
+        value: number,
+        reason: string
+    };
 
-  export type d3Graph = {
-    nodes: d3Node[],
-    links: d3Link[]
-  };
+    export type BehaviorGraph = {
+        nodes: BehaviorGraphNode[],
+        links: BehaviorGraphLink[]
+    };
 }

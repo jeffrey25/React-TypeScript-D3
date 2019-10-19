@@ -1,8 +1,8 @@
 import * as React from "react";
 import * as d3 from "d3";
-import { d3Types } from "../types";
+import { BehaviorGraphTypes } from "../types";
 
-class Link extends React.Component<{ link: d3Types.d3Link }, {}> {
+class Link extends React.Component<{ link: BehaviorGraphTypes.BehaviorGraphLink }, {}> {
   ref: SVGLineElement;
 
   componentDidMount() {
@@ -15,9 +15,9 @@ class Link extends React.Component<{ link: d3Types.d3Link }, {}> {
   }
 }
 
-export default class Links extends React.Component<{ links: d3Types.d3Link[] }, {}> {
+export default class Links extends React.Component<{ links: BehaviorGraphTypes.BehaviorGraphLink[] }, {}> {
   render() {
-    const links = this.props.links.map((link: d3Types.d3Link, index: number) => {
+      const links = this.props.links.map((link: BehaviorGraphTypes.BehaviorGraphLink, index: number) => {
       return <Link key={index} link={link} />;
     });
 
